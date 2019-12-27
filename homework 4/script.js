@@ -1,7 +1,11 @@
 'use strict'
 
-// let enteredNumbers = prompt('Введите числа через запятую');
-// arr = [enteredNumbers];
-// let re = /\s*,\s*/;
-// arrSplited = arr.split(re);
-// console.log(arrSplited);
+const enteredNumbers = prompt('Введите числа через запятую');
+const arrSplited = enteredNumbers.split(',');
+console.log(arrSplited);
+
+const numberArr = arrSplited.filter(number => {
+    return !isNaN(number) && number !== " " && number !== "";
+});
+
+alert(`Числа в массиве ${numberArr.join(',')}`);
