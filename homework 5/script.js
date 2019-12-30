@@ -3,7 +3,7 @@
 let action, numberOfOperands, operand, result;
 const arr = [];
 
-ывваловпол
+
 do {
     action = prompt("Выбирите действие +, -, /, *");
 } while (action !== "+" && action !== "-" && action !== "*" && action !== "/");
