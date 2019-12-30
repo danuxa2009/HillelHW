@@ -10,7 +10,7 @@ do {
 
 do {
   numberOfOperands = +prompt("Введите количество операндов");
-} while ((isNaN(numberOfOperands) > 5) || (isNaN(numberOfOperands) < 0));
+} while (isNaN(numberOfOperands) || numberOfOperands > 5 || numberOfOperands < 0);
 
 
 for (let i = 1; i <= numberOfOperands; i++) {
