@@ -1,0 +1,29 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+div {
+    height: calc(100vh - 21px);
+    align-self: center;
+}
+
+
+.done {
+    background-color: green;
+}
+
+
+li {
+    border: solid 1px grey;
+    margin-top: 3px;
+    text-align: center;
+    background-color: yellow;
+}
+
+ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+}
