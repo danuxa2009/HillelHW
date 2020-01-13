@@ -1,14 +1,15 @@
 "use strict";
 
-const addButton = document.querySelector("#addButton").addEventListener("click", newTask);
 const addInput = document.querySelector("#enteredTask");
-const list = document.getElementById("toDoList");
+const list = document.querySelector("#toDoList");
+
+document.querySelector("#addButton").addEventListener("click", newTask);
 
 function newTask() {
   const newItem = addInput.value;
   if (newItem) {
     addItemToDo(newItem);
-    document.getElementById("enteredTask").value = "";
+    addInput.value = "";
   }
 }
 
