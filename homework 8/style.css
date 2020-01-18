@@ -10,11 +10,9 @@ div {
     align-self: center;
 }
 
-
 .done {
     background-color: green;
 }
-
 
 li {
     border: solid 1px grey;
