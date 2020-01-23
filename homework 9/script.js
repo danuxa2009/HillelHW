@@ -52,3 +52,4 @@ function onContactsListClick(event) {
     removeContact(event.target.closest('.contact-row'));
   }
 }
+1
