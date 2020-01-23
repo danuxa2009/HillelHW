@@ -1,7 +1,7 @@
 "use strict";
 
 const addNewContactForm = document.getElementById("addNewContactForm");
-const injectRow = document.getElementById("injectRow");
+const contactList = document.getElementById("contactList");
 const rowContactTemplate = document.getElementById("contactTemplate").innerHTML;
 
 // document.getElementById("contactTemplate").addEventListener('click', onDeleteButtonClick, true);
@@ -25,12 +25,13 @@ function submitForm() {
 }
 
 function addRowContact(row) {
-  const html = rowContactTemplate
+  const html = rowContactTemplate;
+  html.classList = 'contactRow'
     .replace("{{nameContact}}", row.nameContact)
     .replace("{{surname}}", row.surnameContact)
     .replace("{{phoneNumber}}", row.phoneNumberContact);
   const newContactElement = htmlToElement(html);
-  injectRow.append(newContactElement);
+  contactList.append(newContactElement);
 }
 
 function htmlToElement(html) {
@@ -41,5 +42,13 @@ function htmlToElement(html) {
 }
 
 function onDeleteButtonClick(event) {
-  event.target.remove();
+  if (event.target.classList.contains('deleteBtn')) {
+    removeContact
+  }
+}
+
+function onContactsListClick(event) {
+  if (event.target.classList.contains('delete-btn')) {
+    removeContact(event.target.closest('.contact-row'));
+  }
 }

@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px;
+    background-color: #002230;
+    color: white;
+}
+
+form {
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+}
+
+input {
+    background-color: #002230;
+    border: 2px solid white;
+    border-radius: 7px;
+    padding: 0 10px;
+    height: 40px;
+}
+
+input::placeholder {
+    color: white;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+table {
+    text-align: center;
+    margin-top: 50px;
+    width: 800px;
+}
+
+table tr td {
+    width: 25%;
+    padding: 10px 0;
+}
+
+.title {
+    font-weight: 700;
+    color: #FF6D00;
+    text-transform: uppercase;
+}
+
+input.NotCorrectValue {
+    border-color: red;
+}
+
+
+button {
+    background-color: #FF6D00;
+    border-radius: 7px;
+    padding: 0 20px;
+    height: 40px;
+}

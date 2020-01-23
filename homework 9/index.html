@@ -5,40 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="./normalize.css" />
+    <link rel="stylesheet" href=".normalize.css" />
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" async></script>
   </head>
 
   <body>
-    <table>
-      <tbody id="injectRow">
-        <tr>
-          <th>Имя</th>
-          <th>Фамилия</th>
-          <th>Номер телефона</th>
-          <th>Действие</th>
-        </tr>
-        <tr></tr>
-        <tr></tr>
-        <form id="addNewContactForm">
+    <form id="addNewContactForm">
+      <table>
+        <tbody id="contactList">
+          <tr>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Номер телефона</th>
+            <th>Действие</th>
+          </tr>
+          <tr></tr>
+          <tr></tr>
           <tr>
             <td><input type="text" id="nameContact" /></td>
             <td><input type="text" id="surname" /></td>
             <td><input type="text" id="phoneNumber" /></td>
             <td><input type="submit" value="Добавить" id="actionAdd" /></td>
           </tr>
-        </form>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </form>
 
-    <template id="contactTemplate">
+    <script type="text/template" id="contactTemplate">
       <tr>
         <td>{{nameContact}}</td>
         <td>{{surname}}</td>
         <td>{{phoneNumber}}</td>
         <td><button class="deleteBtn">Удалить</button></td>
       </tr>
-    </template>
+    </script>
   </body>
 </html>
