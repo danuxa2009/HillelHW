@@ -1,4 +1,57 @@
-td,
-th {
-    border: 1px solid black;
+body {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    background-color: teal;
+}
+
+form {
+    width: 800px;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    text-align: center;
+    margin-top: 50px;
+    width: 800px;
+}
+
+input::placeholder {
+    color: white;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+input {
+    background-color: #002230;
+    text-align: center;
+    color: gray;
+    padding: 5px;
+}
+
+input.NotCorrectValue {
+    background-color: red;
+}
+
+table tr td {
+    width: 25%;
+    padding: 10px 0;
+}
+
+
+button {
+    background-color: rgb(8, 54, 10);
+    color: white;
+    padding: 0 20px;
+    height: 40px;
+    cursor: pointer;
+}
+
+
+.close-btn {
+    cursor: pointer;
 }

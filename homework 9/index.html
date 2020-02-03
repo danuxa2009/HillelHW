@@ -5,40 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href=".normalize.css" />
+    <link rel="stylesheet" href="./reset.css" />
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" async></script>
   </head>
 
   <body>
-    <form id="addNewContactForm">
-      <table>
-        <tbody id="contactList">
-          <tr>
-            <th>Имя</th>
-            <th>Фамилия</th>
-            <th>Номер телефона</th>
-            <th>Действие</th>
-          </tr>
-          <tr></tr>
-          <tr></tr>
-          <tr>
-            <td><input type="text" id="nameContact" /></td>
-            <td><input type="text" id="surname" /></td>
-            <td><input type="text" id="phoneNumber" /></td>
-            <td><input type="submit" value="Добавить" id="actionAdd" /></td>
-          </tr>
-        </tbody>
-      </table>
+    <form id="phoneBookForm">
+      <input type="text" id="name" class="inputData" placeholder="Name" />
+      <input type="text" id="surname" class="inputData" placeholder="Surname" />
+      <input type="tel" id="phone" class="inputData" placeholder="Phone number" />
+      <button id="btnAdd">Add</button>
     </form>
-
-    <script type="text/template" id="contactTemplate">
+    <table id="phoneBook">
       <tr>
-        <td>{{nameContact}}</td>
-        <td>{{surname}}</td>
-        <td>{{phoneNumber}}</td>
-        <td><button class="deleteBtn">Удалить</button></td>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Phone</td>
+        <td></td>
       </tr>
+    </table>
+
+    <script type="text/template" id="phoneBookItemTemplate">
+      <td>{{name}}</td>
+      <td>{{surname}}</td>
+      <td>{{phone}}</td>
+      <td class='close-btn' >X</td>
     </script>
   </body>
 </html>

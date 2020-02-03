@@ -1,0 +1,30 @@
+.tabset {
+    width: 600px;
+    height: 350px;
+    background-color: pink;
+    margin: 50px auto;
+    font-family: sans-serif;
+}
+
+
+.tab-h {
+    display: inline-block;
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid black;
+    text-align: center;
+    border-bottom: none;
+
+}
+
+.tab-b {
+    display: none;
+    padding: 20px;
+    border: 1px solid black;
+
+}
+
+.tab-b:nth-child(1) {
+    display: block;
+}
