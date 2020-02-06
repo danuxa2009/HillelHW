@@ -1,42 +1,7 @@
 body {
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
     background-color: #c5cae9
 }
 
-
-td tr {
+.one-half {
     text-align: center;
-    font-family: sans-serif;
-
-}
-
-td {
-    padding: 50px;
-}
-
-.header span:nth-child(1) {
-    position: relative;
-    left: 195px;
-}
-
-.header span:nth-child(2) {
-    position: relative;
-    left: 95px;
-}
-
-.header {
-    width: 562px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 25px;
-
-}
-
-#completed tr {
-    width: 100px;
 }
