@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../homework 16/css/normalize.css" />
+    <link rel="stylesheet" href="../homework 16/css/skeleton.css" />
+    <link rel="stylesheet" href="../homework 16/css/theme.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" async></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <form id="contactForm">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>E-mail</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="contactList"></tbody>
+          <tfoot>
+            <tr>
+              <td><input type="text" id="userName" /></td>
+              <td><input type="text" id="userSurname" /></td>
+              <td><input type="email" id="userEmail" /></td>
+              <td><input type="submit" value="Add" id="btnAddContact" /></td>
+            </tr>
+          </tfoot>
+        </table>
+      </form>
+    </div>
+
+    <script type="text/template" id="contactTemplate">
+      <tr>
+        <td>{{name}}</td>
+        <td>{{surname}}</td>
+        <td>{{email}}</td>
+        <td data-id ='{{id}}'>
+          <button type='button' class="delete-btn">X</button>
+        </td>
+      </tr>
+    </script>
+  </body>
+</html>
