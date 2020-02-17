@@ -1,0 +1,33 @@
+.header {
+    margin-top: 10px;
+}
+
+.newTask {
+    background-color: yellow;
+    height: 180px;
+    width: 180px;
+    color: black;
+    text-align: center;
+    margin: 6px;
+    display: inline-block;
+}
+
+input {
+    background-color: transparent;
+    width: 160px;
+    height: 125px;
+    text-align: center;
+    outline: none;
+    border: none;
+
+}
+
+.deleteBtn {
+    color: black;
+    float: right;
+    height: 35px;
+}
+
+.deleteBtn:hover {
+    color: black;
+}
