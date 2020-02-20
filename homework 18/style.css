@@ -1,0 +1,15 @@
+.done {
+    background-color: green;
+}
+
+
+.task {
+    border: 1px solid #bbb;
+    cursor: pointer;
+    padding: 10px 25px;
+    font-size: 20px;
+}
+
+.remove {
+    float: right;
+}
