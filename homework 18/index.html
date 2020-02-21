@@ -9,22 +9,21 @@
     <link rel="stylesheet" href="../homework 16/css/skeleton.css" />
     <link rel="stylesheet" href="../homework 16/css/theme.css" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" async></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" defer></script>
+    <script src="./script.js" defer></script>
   </head>
 
   <body>
     <div class="container">
       <div class="row">
-        <input id='addStickerBtn' class="two-thirds column" type="button" value="Add"></input>
-        <input id='clearAllBtn' class="one-third column" type="button" value="Clear All"></input>
+        <ul id="tasksList"></ul>
+        <form class="addTodos">
+          <div id="footer">
+            <input class="ten columns" type="text" id="taskInput" placeholder="Enter task" />
+            <button type="submit" id="addTask" class="two columns">Add</button>
+          </div>
+        </form>
       </div>
-      <div id="areaForStickers"></div>
     </div>
-    <script type="text/template" id="stickerTemplate">
-      <div class='sticker' data-sticker-index='{{id}}'>
-        <span class='delete-btn'>X</span>
-        <textarea class='edit-sticker-control' maxlength="108" name="description" id="">{{description}}</textarea>
-      </div>
-    </script>
   </body>
 </html>

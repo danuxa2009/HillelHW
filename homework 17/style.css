@@ -1,33 +1,32 @@
-.header {
+.row {
     margin-top: 10px;
+
 }
 
-.newTask {
-    background-color: yellow;
-    height: 180px;
-    width: 180px;
-    color: black;
+#areaForStickers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sticker {
+    background-color: #C2B078;
+    height: 205px;
+    width: 205px;
     text-align: center;
     margin: 6px;
-    display: inline-block;
-}
-
-input {
-    background-color: transparent;
-    width: 160px;
-    height: 125px;
-    text-align: center;
-    outline: none;
-    border: none;
-
-}
-
-.deleteBtn {
     color: black;
-    float: right;
-    height: 35px;
 }
 
-.deleteBtn:hover {
+.delete-btn {
+    padding-left: 180px;
+    font-size: 16px;
+    cursor: pointer;
     color: black;
+}
+
+.edit-sticker-control {
+    background-color: #6A5D4D;
+    width: 180px;
+    height: 170px;
 }
