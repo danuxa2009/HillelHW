@@ -1,0 +1,49 @@
+.row {
+    margin-top: 10px;
+
+}
+
+#areaForStickers {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sticker {
+    background-color: #C2B078;
+    height: 205px;
+    width: 205px;
+    text-align: center;
+    margin: 6px;
+    color: black;
+}
+
+.delete-btn {
+    padding-right: 15px;
+    float: right;
+    font-size: 16px;
+    cursor: pointer;
+    color: black;
+}
+
+.edit-sticker-control {
+    background-color: #6A5D4D;
+    width: 180px;
+    height: 170px;
+}
+
+#dialog-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.areaForDrag {
+    width: 50px;
+    height: 20px;
+    cursor: pointer;
+    background-color: green;
+    display: inline-block;
+    margin-right: 93px;
+}

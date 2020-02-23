@@ -1,34 +1,34 @@
-$(document).ready(function () {
+const $tasksList = $("#tasksList");
+const $taskInput = $("#taskInput");
 
-  $('#tasksList').html(localStorage.getItem('tasksList'));
+$(document).ready(function() {
+  $tasksList.html(localStorage.setItem("todoListData", JSON.stringify($tasksList)));
 
-  $('.addTodos').submit(function (e) {
+  $(".addTodos").submit(function(e) {
     e.preventDefault();
 
-    const $item = $('#taskInput').val();
+    const item = $taskInput.val();
 
-    if ($item) {
-      $('#tasksList').append("<li class='task'>" + $item + "<span class='remove'>x</span></li>");
+    if (item) {
+      $tasksList.append("<li class='task'>" + item + "<span class='remove'>x</span></li>");
 
-      localStorage.setItem('tasksList', $('#tasksList').html());
+      localStorage.setItem("todoListData", JSON.stringify($tasksList));
 
-      $('#taskInput').val("");
+      $taskInput.val("");
     }
-
   });
 
-  $(document).on('click', '.task', function () {
-    if ($(this).addClass('task')) {
-      $(this).toggleClass('done');
-    }
+  $(document).on("click", ".task", function() {
+    $(this).toggleClass("done");
 
-    localStorage.setItem('tasksList', $('#tasksList').html());
+    localStorage.setItem("todoListData", JSON.stringify($tasksList));
   });
 
-  $(document).on('click', '.remove', function () {
-    $(this).parent().remove();
+  $(document).on("click", ".remove", function() {
+    $(this)
+      .parent()
+      .remove();
 
-    localStorage.setItem('tasksList', $('#tasksList').html());
+    localStorage.setItem("todoListData", JSON.stringify($tasksList));
   });
-
 });
