@@ -1,34 +1,33 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-  $('#tasksList').html(localStorage.getItem('tasksList'));
+    $('#tasksList').html(localStorage.getItem('tasksList'));
 
-  $('.addTodos').submit(function (e) {
-    e.preventDefault();
+    $('.addTodos').submit(function(e) {
+        e.preventDefault();
 
-    const $item = $('#taskInput').val();
+        const $item = $('#taskInput').val();
 
-    if ($item) {
-      $('#tasksList').append("<li class='task'>" + $item + "<span class='remove'>x</span></li>");
+        if ($item) {
+            $('#tasksList').append("<li class='task'>" + $item + "<span class='remove'>x</span></li>");
 
-      localStorage.setItem('tasksList', $('#tasksList').html());
+            localStorage.setItem('tasksList', $('#tasksList').html());
 
-      $('#taskInput').val("");
-    }
+            $('#taskInput').val("");
+        }
 
-  });
+    });
 
-  $(document).on('click', '.task', function () {
-    if ($(this).addClass('task')) {
-      $(this).toggleClass('done');
-    }
+    $(document).on('click', '.task', function() {
 
-    localStorage.setItem('tasksList', $('#tasksList').html());
-  });
+        $(this).toggleClass('done');
 
-  $(document).on('click', '.remove', function () {
-    $(this).parent().remove();
+        localStorage.setItem('tasksList', $('#tasksList').html());
+    });
 
-    localStorage.setItem('tasksList', $('#tasksList').html());
-  });
+    $(document).on('click', '.remove', function() {
+        $(this).parent().remove();
+
+        localStorage.setItem('tasksList', $('#tasksList').html());
+    });
 
 });
