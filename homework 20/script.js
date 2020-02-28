@@ -101,6 +101,7 @@ function onEditBtnClick() {
     }
   });
   editContact(contactId);
+  resetContactForm();
 }
 
 function deleteContact(id) {
@@ -140,7 +141,7 @@ function submitContact() {
     updateContact(contact);
   } else {
     createContact(contact);
-  };
+  }
   resetContactForm();
 }
 
