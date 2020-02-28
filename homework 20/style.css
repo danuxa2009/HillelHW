@@ -1,0 +1,13 @@
+#addContactBtn {
+    float: right;
+}
+
+
+#newContactForm {
+    padding: 20px;
+}
+
+#dialog-form {
+    text-align: center;
+    color: white;
+}

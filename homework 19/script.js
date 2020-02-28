@@ -35,7 +35,7 @@ function onAreaForStickersBlur(e) {
 
   switch (true) {
     case $(e.target).hasClass(EDIT_STICKER_CONTROL_CLASS):
-      updateStickers(element.parentElement.dataset.stickerIndex, element.name, element.value);
+      updateStickers(element.parentElement.data.stickerIndex, element.name, element.value);
       break;
   }
 }
@@ -43,7 +43,7 @@ function onAreaForStickersBlur(e) {
 function onAreaForStickersClick(e) {
   switch (true) {
     case $(e.target).hasClass(DELETE_BTN_CLASS):
-      deleteSticker(e.target.parentElement.dataset.stickerIndex);
+      deleteSticker(e.target.parentElement.data(stickerIndex));
       break;
   }
 }
