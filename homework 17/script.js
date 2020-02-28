@@ -49,115 +49,115 @@ function setId(elemInput) {
 function saveItems(elemInput) {
     const field = document.getElementById('newId');
     sessionStorage.setItem('title', field.value);
+}
+
+let stickersList = [];
 
 
-    let stickersList = [];
+document.getElementById('addStickerBtn').addEventListener('click', onAddStickerBtnClick);
+document.getElementById('clearAllBtn').addEventListener('click', onClearAllBtnClick);
 
+areaForStickers.addEventListener('click', onAreaForStickersClick);
+areaForStickers.addEventListener('blur', onAreaForStickersBlur, true);
 
-    document.getElementById('addStickerBtn').addEventListener('click', onAddStickerBtnClick);
-    document.getElementById('clearAllBtn').addEventListener('click', onClearAllBtnClick);
+init();
 
-    areaForStickers.addEventListener('click', onAreaForStickersClick);
-    areaForStickers.addEventListener('blur', onAreaForStickersBlur, true);
+function onAddStickerBtnClick() {
+    createSticker();
+}
 
-    init();
+function onClearAllBtnClick() {
+    clearAll();
+}
 
-    function onAddStickerBtnClick() {
-        createSticker();
+function onAreaForStickersBlur(e) {
+    const element = e.target;
+
+    switch (true) {
+        case e.target.classList.contains(EDIT_STICKER_CONTROL_CLASS):
+            updateStickers(
+                element.parentElement.dataset.stickerIndex,
+                element.name,
+                element.value
+            );
+            break;
     }
+}
 
-    function onClearAllBtnClick() {
-        clearAll();
+
+
+function onAreaForStickersClick(e) {
+    switch (true) {
+        case e.target.classList.contains(DELETE_BTN_CLASS):
+            deleteSticker(e.target.parentElement.dataset.stickerIndex);
+            break;
     }
+}
 
-    function onAreaForStickersBlur(e) {
-        const element = e.target;
+function init() {
+    restoreState();
+    renderList();
+}
 
-        switch (true) {
-            case e.target.classList.contains(EDIT_STICKER_CONTROL_CLASS):
-                updateStickers(
-                    element.parentElement.dataset.stickerIndex,
-                    element.name,
-                    element.value
-                );
-                break;
-        }
-    }
+function renderList() {
+    stickersList.forEach(renderStickers);
+}
 
+function renderStickers(sticker) {
+    areaForStickers.insertAdjacentHTML('beforeEnd', getStickerHtml(sticker))
+}
 
-
-    function onAreaForStickersClick(e) {
-        switch (true) {
-            case e.target.classList.contains(DELETE_BTN_CLASS):
-                deleteSticker(e.target.parentElement.dataset.stickerIndex);
-                break;
-        }
-    }
-
-    function init() {
-        restoreState();
-        renderList();
-    }
-
-    function renderList() {
-        stickersList.forEach(renderStickers);
-    }
-
-    function renderStickers(sticker) {
-        areaForStickers.insertAdjacentHTML('beforeEnd', getStickerHtml(sticker))
-    }
-
-    function getStickerHtml(sticker) {
-        return stickerTemplate.replace('{{id}}', sticker.id).replace('{{description}}', sticker.description)
-    }
+function getStickerHtml(sticker) {
+    return stickerTemplate.replace('{{id}}', sticker.id).replace('{{description}}', sticker.description)
+}
 
 
-    function updateStickers(id, name, value) {
-        const sticker = stickersList.find(element => element.id == id);
+function updateStickers(id, name, value) {
+    const sticker = stickersList.find(element => element.id == id);
 
-        sticker[name] = value;
-        saveState();
+    sticker[name] = value;
+    saveState();
 
-    }
-
-
-    function clearAll() {
-        stickersList = [];
-        saveState();
-        areaForStickers.innerHTML = '';
-    }
-
-    function deleteSticker(id) {
-        stickersList = stickersList.filter(element => element.id != id);
-        saveState();
-        deleteStickerElement(id);
-    }
-
-    function deleteStickerElement(id) {
-        const element = getStickerElement(id);
-        element && element.remove();
-    }
-
-    function getStickerElement(id) {
-        return areaForStickers.querySelector(`[data-sticker-index="${id}"]`);
-    }
-
-    function createSticker() {
-        const sticker = {
-            id: Date.now(),
-            description: ''
-        };
-        stickersList.push(sticker);
-        saveState();
-        renderStickers(sticker)
-    }
+}
 
 
-    function saveState() {
-        localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(stickersList));
-    }
+function clearAll() {
+    stickersList = [];
+    saveState();
+    areaForStickers.innerHTML = '';
+}
 
-    function restoreState() {
-        stickersList = localStorage.getItem(LOCALSTORAGE_KEY)
-        stickersList = stickersList ? JSON.parse(stickersList) : [];
-    }
+function deleteSticker(id) {
+    stickersList = stickersList.filter(element => element.id != id);
+    saveState();
+    deleteStickerElement(id);
+}
+
+function deleteStickerElement(id) {
+    const element = getStickerElement(id);
+    element && element.remove();
+}
+
+function getStickerElement(id) {
+    return areaForStickers.querySelector(`[data-sticker-index="${id}"]`);
+}
+
+function createSticker() {
+    const sticker = {
+        id: Date.now(),
+        description: ''
+    };
+    stickersList.push(sticker);
+    saveState();
+    renderStickers(sticker)
+}
+
+
+function saveState() {
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(stickersList));
+}
+
+function restoreState() {
+    stickersList = localStorage.getItem(LOCALSTORAGE_KEY)
+    stickersList = stickersList ? JSON.parse(stickersList) : [];
+}
