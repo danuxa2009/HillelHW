@@ -69,13 +69,13 @@ function initDialog() {
 }
 
 function onDeleteBtnClick() {
-  const $contact = $(this).closest(".contact");
+  const $contact = $(this).closest(".contact"); ////
   const contactId = $contact.attr("data-id");
   deleteContact(contactId);
 }
 
 function onEditBtnClick() {
-  const $contact = $(this).closest(".contact");
+  const $contact = $(this).closest(".contact"); ////
   const contactId = $contact.attr("data-id");
   dialog.dialog("open").dialog({
     buttons: {
