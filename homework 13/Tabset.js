@@ -1,122 +1,124 @@
-"use strict";
-
-
-
 class Tabset {
+    static WRAPPER_CLASS = 'tabset-wrapper';
+    static ELEMENTS_LIST_CLASS = 'tabset-elements';
+    static TITLES_LIST_CLASS = 'tabset-titles';
+    static TITLE_CLASS = 'tabset-heading';
+    static ACTIVE_CLASS = 'active';
+    static BUTTONS_CONTAINER_CLASS = 'tabset-buttons';
+
     constructor(el) {
         this.el = el
 
         this.init();
     }
 
+    init() {
+        this.wrapContainer();
+        this.copyTitles();
+        this.copyTitles();
+        this.addEventListener();
+        this.addButtons();  
+    }
+
+
+    wrapContainer() {
+        this.titlesList = document.createElement('div');
+        this.titlesList.className = Tabset.TITLES_LIST_CLASS;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = Tabset.WRAPPER_CLASS;
+        wrapper.append(this.titlesList);
+
+        this.el.parentNode.insertBefore(wrapper, this.el);
+        wrapper.append(this.el);
+
+        this.el.classList.add(Tabset.ELEMENTS_LIST_CLASS);
+    }
+
+    copyTitles() {
+        const titles = this.el.querySelectorAll(`.${Tabset.TITLE_CLASS}`);
+
+        Array.prototype.forEach.call(titles, el => this.titlesList.append(el))
+    }
+
+    addButtons() {
+        const btnsContainer = document.createElement('div');
+        btnsContainer.className = Tabset.BUTTONS_CONTAINER_CLASS;
+
+        const prevBtn = document.createElement('span');
+        prevBtn.textContent = '<';
+        prevBtn.className = 'tabset-button';
+        prevBtn.addEventListener('click', () => this.prev());
+
+        const nextBtn = document.createElement('span');
+        nextBtn.textContent = '>';
+        nextBtn.className = 'tabset-button';
+        nextBtn.addEventListener('click', () => this.next());
+
+        btnsContainer.append(prevBtn);
+        btnsContainer.append(nextBtn);
+
+        this.titlesList.append(btnsContainer);
+    }
+
+    addEventListener() {
+        this.titlesList.addEventListener('click', e => this.onTitleClick(e));
+    }
+
+    onTitleClick(e) {
+        const titleIndex = Array.prototype.indexOf.call(this.titlesList.children,
+            e.target);
+        if (titleIndex >= 0) {
+            this.show(titleIndex);
+        }
+    }
+
+    hideAll() {
+        Array.prototype.forEach.call(
+            this.titlesList.children,
+            (titleEl, index) => {
+                this.hide(index);
+            }
+        );
+    }
+
+    hide(index) {
+        if (!this.titlesList.children[index]) {
+            return;
+        }
+        this.titlesList.children[index].classList.remove(Tabset.ACTIVE_CLASS);
+        this.el.children[index].classList.remove(Tabset.ACTIVE_CLASS);
+    }
+
+    show(index) {
+        if (!this.titlesList.children[index]) {
+            return;
+        }
+
+        this.hide(this.activeIndex);
+        this.activeIndex = index;
+
+        this.titlesList.children[index].classList.add(Tabset.ACTIVE_CLASS);
+        this.el.children[index].classList.add(Tabset.ACTIVE_CLASS);
+    }
+
+    next() {
+        let newIndex = this.activeIndex + 1;
+
+        if (newIndex >= this.titlesList.children.length - 1) {
+            newIndex = 0
+        }
+
+        this.show(newIndex);
+    }
+
+    prev() {
+        let newIndex = this.activeIndex - 1;
+
+        if (newIndex < 0) {
+            newIndex = this.titlesList.children.length - 2;
+        }
+
+        this.show(newIndex);
+    }
 }
-
-init() {
-    this.bindClasses();
-}
-
-
-bindClasses() {
-    this.el.classList.add(Tabset.TABSET_CLASS);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const titles = document.querySelector('.tabs-titles')
-// const titlesBody = document.querySelector('.tabs-body')
-
-
-// class Tabset {
-//     constructor(el) {
-//         this.el = el
-
-//         this.init();
-//     }
-
-//     init() {
-//         // this.bindCallbacks()
-//         this.bindClasses();
-//         this.clickOnTab();
-//         this.tabClick(event);
-//     }
-
-
-//     static TABSET_CLASS = 'tabset';
-//     static TABSET_ITEM = 'tabset-item'
-//     static TABSET_ITEM_ACTIVE = 'active'
-
-//     bindClasses() {
-//         this.el.classList.add(Tabset.TABSET_CLASS);
-//         // titles.children[0].classList.add(Tabset.TABSET_ITEM_ACTIVE)
-//         // titlesBody.children[0].classList.add(Tabset.TABSET_ITEM_ACTIVE)
-//     }
-
-//     clickOnTab() {
-//         document.querySelector('.tab-t').addEventListener('click', tabClick)
-//     }
-
-//     tabClick(event) {
-//         if (event.target.classList.contains('tab-t')) {
-//             const dataTab = event.target.getAttribute('data-tab')
-//             const tabBody = document.querySelectorAll('.tab-b');
-//             for (let i = 0; i < tabBody; i++) {
-//                 if (dataTab == i) {
-//                     tabBody[i].style.display = 'block'
-//                 } else {
-//                     tabBody[i].style.display = 'none'
-//                 }
-//             }
-//         }
-//     }
-
-// }
-
-
-
-
-// bindCallbacks() {
-//     this.el.addEventListener('click', this.onTabsetClick.bind(this));
-// }
-
-// onTabsetClick(e) {
-//     switch(true){
-//         case e.target.classList.contains()
-//     }
-// }
-
-
-
-
-
-// document.querySelector(".tabs-header").addEventListener("click", fTabs);
-
-// function fTabs(event) {
-//     console.log(event);
-//     if (event.target.classList.contains('tab-h')) {
-//         //dataTab
-//         const dataTab = event.target.getAttribute('data-tab')
-//         // все tbs с содержимым
-//         const tabBody = document.querySelector('.tab-b');
-//         for (let i = 0; i < tabBody.length; i++) {
-//             if (dataTab == i) {
-//                 tabBody[i].style.display = 'block'; // show
-//             } else {
-//                 tabBody[i].style.display = 'none'; // hide
-//             }
-//         }
-//     }
-// }
