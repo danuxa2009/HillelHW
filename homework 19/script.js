@@ -46,7 +46,7 @@ function init() {
 
 function renderList() {
   stickersList.forEach(renderStickers);
-  initDrag();
+
 }
 
 function renderStickers(sticker) {
@@ -86,14 +86,30 @@ function getStickerElement(id) {
 }
 
 function createSticker() {
+
   const sticker = {
     id: jQuery.now(),
     description: $modalTextInput.val(),
-    pos: getPosition() // стикеру нужно добавть обновление позицию с помощью getPosition()
+    left: positions
   };
   stickersList.push(sticker);
   saveState();
   renderStickers(sticker);
+  $('.sticker').draggable({
+    handle: ".areaForDrag",
+    cursor: "grabbing",
+    opacity: 0.5,
+    scroll: false,
+    stop: function (e, ui) {
+      positions = ui.position;
+      savePosition();
+      getPosition(); // стикеру нужно добавть обновление позицию с помощью getPosition()
+      let {
+        top,
+        left
+      } = positions
+    }
+  });
 }
 
 function saveState() {
@@ -114,7 +130,6 @@ function initDialog() {
     buttons: {
       Create: function () {
         createSticker();
-        initDrag();
         dialog.dialog("close");
       },
       Cancel: function () {
@@ -127,23 +142,23 @@ function initDialog() {
   });
 }
 
-function initDrag() {
-  $(".sticker").draggable({
-    handle: ".areaForDrag",
-    cursor: "grabbing",
-    opacity: 0.5,
-    scroll: false,
-    stop: function (e, ui, ) {
-      positions = ui.position;
-      savePosition();
-      getPosition(); // стикеру нужно добавть обновление позицию с помощью getPosition()
-    }
-  });
-}
+// function initDrag() {
+//   $(".sticker").draggable({
+//     handle: ".areaForDrag",
+//     cursor: "grabbing",
+//     opacity: 0.5,
+//     scroll: false,
+//     stop: function (e, ui) {
+//       positions = ui.position;
+//       savePosition();
+//       getPosition(); // стикеру нужно добавть обновление позицию с помощью getPosition()
+//     }
+//   });
+// }
 
 function getPosition() {
   const position = JSON.parse(localStorage.getItem(LOCALSTORAGE_POSITION_KEY));
-  return position;
+
 }
 
 function savePosition() {
