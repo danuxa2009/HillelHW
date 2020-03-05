@@ -3,8 +3,7 @@
 const LOCALSTORAGE_KEY = "stickers";
 const LOCALSTORAGE_POSITION_KEY = "positionSticker";
 
-const DELETE_BTN_CLASS = "delete-btn";
-const EDIT_STICKER_CONTROL_CLASS = "edit-sticker-control";
+
 
 const stickerTemplate = $("#stickerTemplate").html();
 const $areaForStickers = $("#areaForStickers");
@@ -17,8 +16,8 @@ let dialog;
 $("#addStickerBtn").on("click", onAddStickerBtnClick);
 $("#clearAllBtn").on("click", onClearAllBtnClick);
 
-$areaForStickers.on("click", onAreaForStickersClick);
-$areaForStickers.on("focusout", onAreaForStickersBlur);
+$areaForStickers.on("click", '.delete-btn', onDeleteBtnClick);
+$areaForStickers.on("focusout", '.edit-sticker-control', onAreaForStickersBlur);
 
 init();
 
@@ -32,20 +31,11 @@ function onClearAllBtnClick() {
 
 function onAreaForStickersBlur(e) {
   const element = e.target;
-
-  switch (true) {
-    case $(e.target).hasClass(EDIT_STICKER_CONTROL_CLASS):
-      updateStickers(element.parentElement.data.stickerIndex, element.name, element.value);
-      break;
-  }
+  updateStickers($(element.parentElement).data('sticker-index'), element.name, element.value);
 }
 
-function onAreaForStickersClick(e) {
-  switch (true) {
-    case $(e.target).hasClass(DELETE_BTN_CLASS):
-      deleteSticker(e.target.parentElement.data(stickerIndex));
-      break;
-  }
+function onDeleteBtnClick(e) {
+  deleteSticker($(e.target.parentElement).data('sticker-index'));
 }
 
 function init() {
@@ -122,16 +112,16 @@ function initDialog() {
     width: 210,
     modal: true,
     buttons: {
-      Create: function() {
+      Create: function () {
         createSticker();
         initDrag();
         dialog.dialog("close");
       },
-      Cancel: function() {
+      Cancel: function () {
         dialog.dialog("close");
       }
     },
-    close: function() {
+    close: function () {
       $modalTextInput.val("");
     }
   });
@@ -143,7 +133,7 @@ function initDrag() {
     cursor: "grabbing",
     opacity: 0.5,
     scroll: false,
-    stop: function(e, ui,) {
+    stop: function (e, ui, ) {
       positions = ui.position;
       savePosition();
       getPosition(); // стикеру нужно добавть обновление позицию с помощью getPosition()
