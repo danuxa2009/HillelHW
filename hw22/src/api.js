@@ -1,11 +1,7 @@
-const PHOTOS_URL = "https://jsonplaceholder.typicode.com/photos";
+const PHOTOS_URL = "https://jsonplaceholder.typicode.com/photos?_limit=30";
 
-const API = {
-  getPhotos: getPhotos
+const API = {};
+
+API.getPhotos = () => {
+  return fetch(PHOTOS_URL).then(response => response.json());
 };
-
-function getPhotos() {
-  fetch(PHOTOS_URL)
-    .then(response => response.json())
-    .then(renderPhotos);
-}

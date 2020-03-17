@@ -1,31 +1,24 @@
-const $galleryContainer = $("#galleryContainer");
+$(() => {
+  const $galleryContainer = $("#galleryContainer");
+  const photoItemTemplate = $("#photoItemTemplate").html();
+
+  API.getPhotos().then(setGallery);
+
+  function setGallery(list) {
+    renderPhotos(list);
+    initGallery();
+  }
 
 
-// const $photoItemTemplate = $("#photoItemTemplate").html();
+  function renderPhotos(photos) {
+    $galleryContainer.html(photos.map(addPhoto));
+  }
 
-init();
+  function addPhoto(photo) {
+    return photoItemTemplate.replace("{{url}}", photo.url).replace("{{thumbnailUrl}}", photo.thumbnailUrl);
+  }
 
-function init() {
-  API.getPhotos();
-}
-
-function renderPhotos(list) {
-  list.forEach(addPhotos);
-}
-
-function addPhotos(photo) {
-  const $html = $("#photoItemTemplate")
-    .replace("{{url}}", photo.url)
-    .replace("{{thumbnailUrl}}", photo.thumbnailUrl);
-
-  const newPhotoEl = htmlToElement($html);
-  galleryContainer.append(newPhotoEl);
-  console.log(photo.url);
-}
-
-function htmlToElement(html) {
-  const template = document.createElement("template");
-
-  template.innerHTML = html;
-  return template.content.firstChild;
-}
+  function initGallery() {
+    $galleryContainer.nanogallery2();
+  }
+});

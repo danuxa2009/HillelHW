@@ -4,21 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- inject:head:css -->
-    <!-- only importantFile.js will be injected here -->
+    <!-- inject:css -->
     <!-- endinject -->
 
-    <!-- inject:head:js -->
-    <!-- only importantFile.js will be injected here -->
+    <!-- inject:js -->
     <!-- endinject -->
-    <link rel="stylesheet" href="./styles.css" />
-    <script src="./vendors.js"></script>
-    <script src="./all.js"></script>
   </head>
   <body>
-    <div data-nanogallery2 id="galleryContainer"></div>
+    <div id="galleryContainer"></div>
     <script type="text/template" id="photoItemTemplate">
-      <a class='forR'></a>
+      <a href="{{url}}" data-ngThumb="{{thumbnailUrl}}"></a>
     </script>
   </body>
 </html>
