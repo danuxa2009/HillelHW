@@ -1,12 +1,11 @@
-html,
 body {
-  background-color: rosybrown;
+  background-color: #a3c1b4;
   display: flex;
   justify-content: center;
 }
 
 .done {
-  background-color: green;
+  background-color: #7a8b65;
 }
 
 .style-list {
@@ -14,7 +13,8 @@ body {
 }
 
 .style-list div {
-  border: solid 1px yellowgreen;
-  border-bottom: none;
-  border-radius: 20px;
+  border: solid 2px #424f35;
+  font-size: 20px;
+  border-radius: 8px;
+  margin-top: 5px;
 }
