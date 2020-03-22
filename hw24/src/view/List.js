@@ -3,6 +3,7 @@ import "./list.css";
 export default class List {
   constructor() {
     this.el = document.createElement("div");
+    this.el.classList.add("style-list");
   }
 
   render(list) {
