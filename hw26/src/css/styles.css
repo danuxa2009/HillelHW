@@ -1,0 +1,21 @@
+#listOfMessages {
+  height: 250px;
+  width: auto;
+  border: 1px solid white;
+  border-radius: 20px;
+  margin: 15px;
+  overflow: auto;
+}
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.columns:first-child {
+  margin-left: 4%;
+}
+#sendingForm {
+  text-align: center;
+}
+button:hover {
+  background-color: teal;
+}
