@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact List</title>
+  </head>
+  <body>
+    <form id="newContactForm" class="form">
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>E-mail</th>
+            <th>Birthday date</th>
+          </tr>
+        </thead>
+        <tbody id="contactsList"></tbody>
+        <tfoot>
+          <tr>
+            <td>
+              <input type="text" name="name" id="nameInput" class="form-input" />
+            </td>
+            <td>
+              <input type="tel" name="phone" id="phoneInput" class="form-input" />
+            </td>
+            <td>
+              <input type="email" name="email" id="emailInput" class="form-input" />
+            </td>
+            <td>
+              <input type="date" name="date" id="dateInput" class="form-input" />
+            </td>
+            <td><button id="addContactBtn">Add Contact</button></td>
+          </tr>
+        </tfoot>
+      </table>
+    </form>
+  </body>
+</html>

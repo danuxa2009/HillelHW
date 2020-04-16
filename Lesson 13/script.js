@@ -1,5 +1,5 @@
-const acc = new Accordeon(document.getElementById('myAccordeon'));
+const timer = new Promise(function() {
+  setTimeout(() => console.log("timeout"), 2000);
+});
 
-document.getElementById('btn').addEventListener('click', () => acc.showIndex(2))
-
-console.log(acc)
+timer.then(()=>);
