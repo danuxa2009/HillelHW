@@ -1,7 +1,0 @@
-.accordeon-item-content {
-    display: none;
-}
-
-.active .accordeon-item-content {
-    display: block;
-}
