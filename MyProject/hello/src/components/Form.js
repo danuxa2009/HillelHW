@@ -1,15 +1,24 @@
 import React, { useState, useContext } from 'react';
 import { AlertContext } from '../Context/alert/alertContext';
+import { FireBaseContext } from '../Context/firebase/firebaseContext';
 
 export const Form = () => {
   const [value, setValue] = useState('');
   const alert = useContext(AlertContext);
+  const firebase = useContext(FireBaseContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     if (value.trim()) {
-      alert.show('Заметка была создана', 'success');
+      firebase
+        .addNote(value.trim())
+        .then(() => {
+          alert.show('Заметка была создана', 'success');
+        })
+        .catch(() => {
+          alert.show('Что-то пошло не так ', 'danger');
+        });
       setValue('');
     } else {
       alert.show('Введите название заметки');
