@@ -10,7 +10,7 @@
   "author": "Danylo Titenko <danuxa2009@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "gulp": "^4.0.2"
